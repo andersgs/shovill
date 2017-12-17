@@ -94,8 +94,8 @@ unless ($gsize) {
   msg("Estimating genome size with 'jellyfish'");
   # FIXME: want to choose a dynamic kmer cutoff for high cov samples
   my $minkc = 3;  # max(3, int($depth/100));
-  $dir = File::Temp->newdir();
-  $dirname = $dir->dirname;
+  my $dir = File::Temp->newdir();
+  my $dirname = $dir->dirname;
   run_cmd("jellyfish count -s$ram_int -m25 --canonical -L$minkc -t$cpus -o $dirname/mer_counts.jf <( zcat\Q$R1\E )");
   run_cmd("jellyfish stats $dirname/mer_counts.jf", '20-jf.log');
   my($ucount) = grep { m/Distinct:/ } read_file('20-jf.log');
