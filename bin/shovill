@@ -5,7 +5,7 @@ use File::Slurp;
 use File::Path qw(make_path remove_tree);
 use File::Spec;
 use File::Copy;
-use File::Temp; qw(new_dir);
+use File::Temp;
 use List::Util qw(min max);
 use Cwd;
 use File::Basename;
